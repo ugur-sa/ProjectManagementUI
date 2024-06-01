@@ -1,24 +1,28 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Task } from './models/task';
 import { TaskService } from './services/task.service';
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    LoginComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'ProjectManagementUI';
   tasks: Task[] = [];
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe(tasks => {
-      this.tasks = tasks;
-    });
+    console.log("AppComponent initialized");
   }
 }

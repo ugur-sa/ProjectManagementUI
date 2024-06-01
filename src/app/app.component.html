@@ -1,22 +1,14 @@
-<div class="h-dvh w-dvw">
-  @for (task of tasks; track $index) {
-    <table class="border">
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Created</th>
-        <th>Updated</th>
-        <th>Due</th>
-      </tr>
-      <tr>
-        <td>{{ task.id }}</td>
-        <td>{{ task.title }}</td>
-        <td>{{ task.description }}</td>
-        <td>{{ task.created }}</td>
-        <td>{{ task.updated }}</td>
-        <td>{{ task.due }}</td>
-      </tr>
-    </table>
-  }
-</div>
+<nav>
+  <ul>
+    <li>
+      <a
+        routerLink="/login"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Login</a
+      >
+    </li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
