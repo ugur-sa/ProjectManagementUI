@@ -1,39 +1,28 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { Router } from '@angular/router';
-import { AuthResponse, LoginRequest } from '../models/auth-request';
-import { Observable, tap } from 'rxjs';
+import { LoginRequest, RegisterRequest, UserInterface } from '../models/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private authUrl = `${environment.apiUrl}/auth/login`;
-  private tokenKey = 'token';
+  // private authUrl = `${environment.apiUrl}/auth/login`;
+  private realWorldAPI = environment.realWorldAPI;
+  currentUserSig = signal<UserInterface | undefined | null>(undefined);
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
   ) {}
 
-  login(loginRequest: LoginRequest): Observable<AuthResponse> {
-    console.log("This is the AuthService")
-    console.log(loginRequest.email, loginRequest.password);
-
-    return this.http.post<AuthResponse>(this.authUrl, loginRequest).pipe(
-      tap(response => {
-        console.log(response);
-      })
-    );
+  login(loginRequest: LoginRequest): Observable<{ user: UserInterface }> {
+    return this.http.post<{ user: UserInterface }>(`${this.realWorldAPI}/users/login`, { user: loginRequest });
   }
 
-  logout(): void {
-    this.router.navigate(['/login']);
+  register(registerRequest: RegisterRequest): Observable<{ user: UserInterface }> {
+    return this.http.post<{ user: UserInterface }>(`${this.realWorldAPI}/users`, {
+      user: registerRequest,
+    })
   }
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
-  }
-
 }
