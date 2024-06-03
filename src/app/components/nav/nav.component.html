@@ -1,0 +1,25 @@
+<nav>
+  <ul class="flex gap-2">
+    @if (authService.currentUserSig() === null) {
+      <li>
+        <a
+          routerLink="/login"
+          data-testid="login-anchor"
+        >Login</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/register"
+        >Registration</a
+        >
+      </li>
+    }
+    @if (authService.currentUserSig()) {
+      <li>
+        {{ authService.currentUserSig()?.username }}
+        <button (click)="authService.logout()">Logout</button>
+      </li>
+    }
+  </ul>
+</nav>
