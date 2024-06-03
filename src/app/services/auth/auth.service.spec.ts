@@ -11,13 +11,12 @@ import {
   UserInterface,
 } from '../../models/auth';
 import { provideRouter, Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 describe('AuthService', () => {
   let authService: AuthService;
   let httpTestingController: HttpTestingController;
   let router: Router;
-
-  const realWorldAPI = 'https://api.realworld.io/api';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -66,7 +65,7 @@ describe('AuthService', () => {
       });
 
       const req = httpTestingController.expectOne(
-        `${realWorldAPI}/users/login`
+        `${environment.realWorldAPI}/users/login`
       );
       req.flush(mockResponse);
 
@@ -104,7 +103,9 @@ describe('AuthService', () => {
         actualRes = response;
       });
 
-      const req = httpTestingController.expectOne(`${realWorldAPI}/users`);
+      const req = httpTestingController.expectOne(
+        `${environment.realWorldAPI}/users`
+      );
       req.flush(mockResponse);
 
       expect(req.request.method).toBe('POST');

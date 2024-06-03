@@ -8,13 +8,14 @@ import {
 } from '../../models/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   // private authUrl = `${environment.apiUrl}/auth/login`;
-  private realWorldAPI = 'https://api.realworld.io/api';
+  private realWorldAPI = environment.realWorldAPI;
   currentUserSig = signal<UserInterface | undefined | null>(undefined);
 
   constructor(
