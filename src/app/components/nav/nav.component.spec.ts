@@ -1,6 +1,6 @@
 import { NavComponent } from './nav.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { signal } from '@angular/core';
 import { UserInterface } from '../../models/auth';
 

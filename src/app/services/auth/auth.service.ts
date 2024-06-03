@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { environment } from '../../environments/environment.development';
-import { LoginRequest, RegisterRequest, UserInterface } from '../models/auth';
+import { environment } from '../../../environments/environment.development';
+import {
+  LoginRequest,
+  RegisterRequest,
+  UserInterface,
+} from '../../models/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 

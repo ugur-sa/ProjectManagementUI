@@ -6,7 +6,7 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { UserInterface } from './models/auth';
 import { NavComponent } from './components/nav/nav.component';

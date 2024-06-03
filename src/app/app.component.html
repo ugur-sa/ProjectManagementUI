@@ -1,6 +1,6 @@
 <div class="h-dvh w-dvw">
   <app-nav></app-nav>
-  <main class="flex flex-col flex-grow border border-red-500">
+  <main class="border-red-500">
     @if (authService.currentUserSig()) {
       <span
         >YOU ARE LOGGED IN {{ authService.currentUserSig()?.username }}</span

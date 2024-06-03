@@ -1,6 +1,6 @@
 import { RegistrationComponent } from './registration.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 

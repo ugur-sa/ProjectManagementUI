@@ -5,8 +5,12 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
-import { LoginRequest, RegisterRequest, UserInterface } from '../models/auth';
-import { environment } from '../../environments/environment.development';
+import {
+  LoginRequest,
+  RegisterRequest,
+  UserInterface,
+} from '../../models/auth';
+import { environment } from '../../../environments/environment.development';
 import { provideRouter, Router } from '@angular/router';
 
 describe('AuthService', () => {
@@ -65,6 +69,8 @@ describe('AuthService', () => {
       );
       req.flush(mockResponse);
 
+      expect(req.request.method).toBe('POST');
+
       expect(actualRes).toEqual({
         user: {
           email: 'ugur@gmail.com',
@@ -101,6 +107,8 @@ describe('AuthService', () => {
         `${environment.realWorldAPI}/users`
       );
       req.flush(mockResponse);
+
+      expect(req.request.method).toBe('POST');
 
       expect(actualRes).toEqual({
         user: {
