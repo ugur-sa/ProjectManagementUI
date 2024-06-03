@@ -1,35 +1,10 @@
 <div class="h-dvh w-dvw">
-  <nav>
-    <ul class="flex gap-2">
-      @if (authService.currentUserSig() === null) {
-        <li>
-          <a
-            routerLink="/login"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >Login</a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="/register"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-          >Registration</a
-          >
-        </li>
-      }
-      @if (authService.currentUserSig()) {
-        <li>
-          {{ authService.currentUserSig()?.username}}
-          <button (click)="onLogout()">Logout</button>
-        </li>
-      }
-    </ul>
-  </nav>
-  <main>
+  <app-nav></app-nav>
+  <main class="flex flex-col flex-grow border border-red-500">
     @if (authService.currentUserSig()) {
-      <span>YOU ARE LOGGED IN {{ authService.currentUserSig()?.username }}</span>
+      <span
+        >YOU ARE LOGGED IN {{ authService.currentUserSig()?.username }}</span
+      >
     }
     <router-outlet></router-outlet>
   </main>

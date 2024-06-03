@@ -3,6 +3,7 @@ import { Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { LoginRequest, RegisterRequest, UserInterface } from '../models/auth';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,16 +14,31 @@ export class AuthService {
   currentUserSig = signal<UserInterface | undefined | null>(undefined);
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   login(loginRequest: LoginRequest): Observable<{ user: UserInterface }> {
-    return this.http.post<{ user: UserInterface }>(`${this.realWorldAPI}/users/login`, { user: loginRequest });
+    return this.http.post<{ user: UserInterface }>(
+      `${this.realWorldAPI}/users/login`,
+      { user: loginRequest }
+    );
   }
 
-  register(registerRequest: RegisterRequest): Observable<{ user: UserInterface }> {
-    return this.http.post<{ user: UserInterface }>(`${this.realWorldAPI}/users`, {
-      user: registerRequest,
-    })
+  register(
+    registerRequest: RegisterRequest
+  ): Observable<{ user: UserInterface }> {
+    return this.http.post<{ user: UserInterface }>(
+      `${this.realWorldAPI}/users`,
+      {
+        user: registerRequest,
+      }
+    );
+  }
+
+  logout() {
+    localStorage.setItem('token', '');
+    this.currentUserSig.set(null);
+    void this.router.navigateByUrl('/login');
   }
 }
