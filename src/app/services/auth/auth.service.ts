@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+
 import {
   LoginRequest,
   RegisterRequest,
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   // private authUrl = `${environment.apiUrl}/auth/login`;
-  private realWorldAPI = environment.realWorldAPI;
+  private realWorldAPI = 'https://api.realworld.io/api';
   currentUserSig = signal<UserInterface | undefined | null>(undefined);
 
   constructor(
