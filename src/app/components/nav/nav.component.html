@@ -1,28 +1,36 @@
-<header class="h-16 bg-gray-800 text-white flex items-center justify-center">
-<nav>
-  <ul class="flex gap-2">
-    @if (authService.currentUserSig() === null) {
-      <li>
-        <a
-          routerLink="/login"
-          routerLinkActive="active"
-          data-testid="login-anchor"
-        >Login</a
-        >
-      </li>
-      <li>
-        <a
-          routerLink="/register"
-          routerLinkActive="active"
-        >Registration</a
-        >
-      </li>
-    }
-    @if (authService.currentUserSig()) {
-      <li>
-        <button (click)="authService.logout()">Logout</button>
-      </li>
-    }
-  </ul>
-</nav>
+<header class="h-16 bg-gray-800 text-white flex items-center justify-end pr-4">
+  <nav>
+    <ul>
+      @if (authService.currentUserSig() === null) {
+        @if (router.url === '/register') {
+          <li>
+            <a
+              class="px-3 py-1 rounded-md bg-zinc-500 hover:bg-zinc-600"
+              routerLink="/login"
+              routerLinkActive="active"
+            >Login</a
+            >
+          </li>
+        } @else {
+          <li>
+            <a
+              class="px-3 py-1 rounded-md bg-zinc-500 hover:bg-zinc-600"
+              routerLink="/register"
+              routerLinkActive="active"
+            >Register</a
+            >
+          </li>
+        }
+      }
+      @if (authService.currentUserSig()) {
+        <li>
+          <button
+            type="button"
+            class="px-3 py-1 rounded-md bg-zinc-500 hover:bg-zinc-600"
+            (click)="authService.logout()"
+          >Logout</button>
+        </li>
+      }
+    </ul>
+  </nav>
 </header>
