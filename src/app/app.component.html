@@ -1,11 +1,13 @@
-<div class="h-dvh w-dvw">
+<header>
   <app-nav></app-nav>
-  <main class="border-red-500">
-    @if (authService.currentUserSig()) {
-      <span
-        >YOU ARE LOGGED IN {{ authService.currentUserSig()?.username }}</span
-      >
-    }
-    <router-outlet></router-outlet>
-  </main>
-</div>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  @if (authService.currentUserSig()) {
+    <span
+    >YOU ARE LOGGED IN {{ authService.currentUserSig()?.username }}</span
+    >
+  }
+</footer>
