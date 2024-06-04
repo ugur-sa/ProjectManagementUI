@@ -48,20 +48,6 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    this.http
-      .get<{ user: UserInterface }>(`${environment.realWorldAPI}/user`)
-      .subscribe({
-        next: response => {
-          this.currentUserSig.set(response.user);
-          void this.router.navigateByUrl('/');
-          return true;
-        },
-        error: () => {
-          this.currentUserSig.set(null);
-          void this.router.navigateByUrl('/login');
-          return false;
-        },
-      });
-    return false;
+    return this.currentUserSig()?.token !== '';
   }
 }
