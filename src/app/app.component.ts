@@ -1,14 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
-import {
-  Router,
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet,
-} from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth/auth.service';
-import { HttpClient } from '@angular/common/http';
-import { UserInterface } from './models/auth';
 import { NavComponent } from './components/nav/nav.component';
 
 @Component({
@@ -24,24 +17,6 @@ import { NavComponent } from './components/nav/nav.component';
   ],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   authService = inject(AuthService);
-  http = inject(HttpClient);
-  router = inject(Router);
-  title = 'ProjectManagementUI';
-
-  ngOnInit(): void {
-    this.http
-      .get<{ user: UserInterface }>('https://api.realworld.io/api/user')
-      .subscribe({
-        next: response => {
-          this.authService.currentUserSig.set(response.user);
-          void this.router.navigateByUrl('/');
-        },
-        error: () => {
-          this.authService.currentUserSig.set(null);
-          void this.router.navigateByUrl('/login');
-        },
-      });
-  }
 }
