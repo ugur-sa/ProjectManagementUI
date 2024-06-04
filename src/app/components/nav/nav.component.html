@@ -17,7 +17,6 @@
     }
     @if (authService.currentUserSig()) {
       <li>
-        {{ authService.currentUserSig()?.username }}
         <button (click)="authService.logout()">Logout</button>
       </li>
     }
