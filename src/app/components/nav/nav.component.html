@@ -1,9 +1,11 @@
+<header class="h-16 bg-gray-800 text-white flex items-center justify-center">
 <nav>
   <ul class="flex gap-2">
     @if (authService.currentUserSig() === null) {
       <li>
         <a
           routerLink="/login"
+          routerLinkActive="active"
           data-testid="login-anchor"
         >Login</a
         >
@@ -11,6 +13,7 @@
       <li>
         <a
           routerLink="/register"
+          routerLinkActive="active"
         >Registration</a
         >
       </li>
@@ -22,3 +25,4 @@
     }
   </ul>
 </nav>
+</header>

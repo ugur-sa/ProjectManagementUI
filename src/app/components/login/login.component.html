@@ -1,44 +1,44 @@
-<div class="h-full w-full flex justify-center items-center">
-  <div class="h-[325px] w-[600px] shadow-xl rounded-lg border p-8">
-    <h1 class="text-3xl font-bold">Welcome back!</h1>
-    <form [formGroup]="loginData" (submit)="onLogin()">
-      <div class="mt-4">
-        <label for="email" class="block text-sm font-medium text-gray-700"
+ <div class="flex justify-center items-center h-full w-dvw">
+    <div class="h-[325px] w-[600px] shadow-xl rounded-lg border p-8 bg-white">
+      <h1 class="text-3xl font-bold">Welcome back!</h1>
+      <form [formGroup]="loginData" (submit)="onLogin()">
+        <div class="mt-4">
+          <label for="email" class="block text-sm font-medium text-gray-700"
           >E-Mail</label
-        >
-        <input
-          placeholder="johndoe@example.com"
-          type="email"
-          id="email"
-          name="email"
-          formControlName="email"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-      </div>
-      <div class="mt-4">
-        <label for="password" class="block text-sm font-medium text-gray-700"
+          >
+          <input
+            placeholder="johndoe@example.com"
+            type="email"
+            id="email"
+            name="email"
+            formControlName="email"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div class="mt-4">
+          <label for="password" class="block text-sm font-medium text-gray-700"
           >Password</label
-        >
-        <input
-          type="password"
-          id="password"
-          name="password"
-          formControlName="password"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-      </div>
-      <div class="mt-4">
-        <button
-          id="login"
-          type="submit"
-          class="w-full bg-black text-white p-2 rounded-md">
-          Login
-        </button>
-        <label for="login">
-          <p class="text-sm font-thin">
-            Don't have an account?
-            <a [routerLink]="['/register']" class="font-semibold underline">Sign Up</a>
-          </p>
-        </label>
-      </div>
-    </form>
-  </div>
-</div>
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div class="mt-4">
+          <button
+            id="login"
+            type="submit"
+            class="w-full bg-black text-white p-2 rounded-md">
+            Login
+          </button>
+          <label for="login">
+            <p class="text-sm font-thin">
+              Don't have an account?
+              <a [routerLink]="['/register']" class="font-semibold underline">Sign Up</a>
+            </p>
+          </label>
+        </div>
+      </form>
+    </div>
+ </div>
