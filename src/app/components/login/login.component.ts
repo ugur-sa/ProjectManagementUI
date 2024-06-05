@@ -39,7 +39,7 @@ export class LoginComponent {
       next: response => {
         localStorage.setItem('token', response.user.token);
         this.authService.currentUserSig.set(response.user);
-        void this.router.navigateByUrl('/');
+        void this.router.navigateByUrl('/dashboard');
       },
       error: () => {
         console.error('Login failed');

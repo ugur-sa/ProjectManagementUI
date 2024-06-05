@@ -8,6 +8,11 @@ import { AuthService } from './services/auth/auth.service';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dashboard',
     component: DashboardComponent,
     canActivate: [() => inject(AuthService).isLoggedIn()],
   },
