@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -10,4 +10,5 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class NavComponent {
   authService = inject(AuthService);
+  router = inject(Router);
 }

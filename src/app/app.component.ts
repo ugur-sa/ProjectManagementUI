@@ -7,9 +7,9 @@ import {
 } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth/auth.service';
+import { NavComponent } from './components/nav/nav.component';
 import { HttpClient } from '@angular/common/http';
 import { UserInterface } from './models/auth';
-import { NavComponent } from './components/nav/nav.component';
 
 @Component({
   selector: 'app-root',

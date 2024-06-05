@@ -46,4 +46,8 @@ export class AuthService {
     this.currentUserSig.set(null);
     void this.router.navigateByUrl('/login');
   }
+
+  isLoggedIn(): boolean {
+    return this.currentUserSig()?.token !== '';
+  }
 }

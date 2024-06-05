@@ -3,11 +3,4 @@
   <main class="flex flex-grow bg-gray-100 overflow-hidden">
     <router-outlet></router-outlet>
   </main>
-  <footer class="h-10 bg-gray-800 text-white flex items-center justify-center">
-    @if (authService.currentUserSig()) {
-      <span
-      >YOU ARE LOGGED IN {{ authService.currentUserSig()?.username }}</span
-      >
-    }
-  </footer>
 </div>
