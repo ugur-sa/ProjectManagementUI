@@ -29,7 +29,8 @@
           <button
             id="login"
             type="submit"
-            class="w-full bg-black text-white p-2 rounded-md">
+            [disabled]="!loginData.valid"
+            class="w-full bg-black text-white p-2 rounded-md disabled:bg-zinc-600 disabled:hover:cursor-not-allowed">
             Login
           </button>
           <label for="login">
