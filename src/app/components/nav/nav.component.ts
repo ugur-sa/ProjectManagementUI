@@ -11,4 +11,10 @@ import { AuthService } from '../../services/auth/auth.service';
 export class NavComponent {
   authService = inject(AuthService);
   router = inject(Router);
+
+  getInitial(): string {
+    return (
+      this.authService.currentUserSig()?.username.charAt(0).toUpperCase() ?? ''
+    );
+  }
 }
