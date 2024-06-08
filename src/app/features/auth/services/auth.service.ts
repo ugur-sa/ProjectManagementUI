@@ -44,6 +44,6 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.currentUserSig()?.token !== '';
+    return this.currentUserSig()?.token !== undefined;
   }
 }
