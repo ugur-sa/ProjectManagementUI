@@ -1,10 +1,11 @@
- <div class="flex justify-center items-center h-full w-dvw">
+@defer {
+  <div class="flex justify-center items-center h-full w-dvw">
     <div class="h-[325px] w-[600px] shadow-xl rounded-lg border p-8 bg-white">
       <h1 class="text-3xl font-bold">Welcome back!</h1>
       <form [formGroup]="loginData" (submit)="onLogin()">
         <div class="mt-4">
           <label for="email" class="block text-sm font-medium text-gray-700"
-          >E-Mail</label
+            >E-Mail</label
           >
           <input
             placeholder="johndoe@example.com"
@@ -16,7 +17,7 @@
         </div>
         <div class="mt-4">
           <label for="password" class="block text-sm font-medium text-gray-700"
-          >Password</label
+            >Password</label
           >
           <input
             type="password"
@@ -36,10 +37,13 @@
           <label for="login">
             <p class="text-sm font-thin">
               Don't have an account?
-              <a [routerLink]="['/register']" class="font-semibold underline">Sign Up</a>
+              <a [routerLink]="['/register']" class="font-semibold underline"
+                >Sign Up</a
+              >
             </p>
           </label>
         </div>
       </form>
     </div>
- </div>
+  </div>
+}
