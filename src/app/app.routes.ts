@@ -2,8 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/components/login/login.component';
 import { RegistrationComponent } from './features/auth/components/registration/registration.component';
 import { DashboardComponent } from './pages/projects/components/dashboard/dashboard.component';
-import { inject } from '@angular/core';
-import { AuthService } from './features/auth/services/auth.service';
+import { isLoggedInGuard } from './core/guards/is-logged-in.guard';
 
 export const routes: Routes = [
   {
@@ -14,7 +13,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [() => inject(AuthService).isLoggedIn()],
+    canActivate: [isLoggedInGuard],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
