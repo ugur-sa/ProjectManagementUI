@@ -1,8 +1,8 @@
 import { NavComponent } from './nav.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../../features/auth/services/auth.service';
 import { signal } from '@angular/core';
-import { UserInterface } from '../../models/auth';
+import { UserInterface } from '../../../features/auth/models/auth';
 
 describe('NavComponent', () => {
   let component: NavComponent;

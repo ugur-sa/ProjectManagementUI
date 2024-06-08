@@ -5,11 +5,11 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { AuthService } from './services/auth/auth.service';
-import { NavComponent } from './components/nav/nav.component';
+import { LoginComponent } from './features/auth/components/login/login.component';
+import { AuthService } from './features/auth/services/auth.service';
+import { NavComponent } from './shared/components/nav/nav.component';
 import { HttpClient } from '@angular/common/http';
-import { UserInterface } from './models/auth';
+import { UserInterface } from './features/auth/models/auth';
 
 @Component({
   selector: 'app-root',

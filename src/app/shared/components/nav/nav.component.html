@@ -1,0 +1,66 @@
+<!-- <nav class="h-12 border-b bg-white dark:bg-gray-dark dark:text-white font-sans"> -->
+<nav class="h-16 border-b bg-white font-sans font-normal flex">
+  <div class="flex items-center gap-6 h-full w-1/2 pl-4">
+    <div
+      class="h-8 w-8 bg-gray-dark rounded-full text-white grid place-content-center text-xl">
+      P
+    </div>
+    <span class="text-neutral-400 text-lg">/</span>
+    <div class="flex gap-2 items-center">
+      <div
+        class="bg-cyan-500 w-8 h-8 grid place-content-center rounded-full font-semibold text-xl text-white">
+        {{ getInitial() }}
+      </div>
+      <!-- <span>{{ authService.currentUserSig()?.username }}</span> -->
+      <span>Ugur Sadiklar</span>
+    </div>
+    <span class="text-neutral-400 text-lg">/</span>
+    <div>Project Management App</div>
+  </div>
+  <div class="flex gap-4 items-center justify-end h-full w-1/2 pr-4">
+    <div class="w-6 h-6 border border-black rounded-full"></div>
+    <div
+      class="bg-cyan-500 w-10 h-10 grid place-content-center rounded-full font-semibold text-xl text-white">
+      {{ getInitial() }}
+    </div>
+  </div>
+</nav>
+
+<!--
+<header class="h-16 bg-gray-800 text-white flex items-center justify-end pr-4">
+  <nav>
+    <ul>
+      @if (authService.currentUserSig() === null) {
+        @if (router.url === '/register') {
+          <li>
+            <a
+              class="px-3 py-1 rounded-md bg-zinc-500 hover:bg-zinc-600"
+              routerLink="/login"
+              routerLinkActive="active"
+            >Login</a
+            >
+          </li>
+        } @else {
+          <li>
+            <a
+              class="px-3 py-1 rounded-md bg-zinc-500 hover:bg-zinc-600"
+              routerLink="/register"
+              routerLinkActive="active"
+            >Register</a
+            >
+          </li>
+        }
+      }
+      @if (authService.currentUserSig()) {
+        <li>
+          <button
+            type="button"
+            class="px-3 py-1 rounded-md bg-zinc-500 hover:bg-zinc-600"
+            (click)="authService.logout()"
+          >Logout</button>
+        </li>
+      }
+    </ul>
+  </nav>
+</header>
+-->

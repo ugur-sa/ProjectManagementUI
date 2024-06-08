@@ -1,14 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 
-import {
-  LoginRequest,
-  RegisterRequest,
-  UserInterface,
-} from '../../models/auth';
+import { LoginRequest, RegisterRequest, UserInterface } from '../models/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',

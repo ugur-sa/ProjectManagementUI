@@ -5,13 +5,9 @@ import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
-import {
-  LoginRequest,
-  RegisterRequest,
-  UserInterface,
-} from '../../models/auth';
+import { LoginRequest, RegisterRequest, UserInterface } from '../models/auth';
 import { provideRouter, Router } from '@angular/router';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../../environments/environment.development';
 
 describe('AuthService', () => {
   let authService: AuthService;
