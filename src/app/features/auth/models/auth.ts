@@ -14,3 +14,10 @@ export interface UserInterface {
   email: string;
   username: string;
 }
+
+export interface UpdateRequest {
+  email?: string;
+  password?: string;
+  username?: string;
+  image?: string;
+}

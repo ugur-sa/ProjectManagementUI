@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 
-import { LoginRequest, RegisterRequest, UserInterface } from '../models/auth';
+import {
+  LoginRequest,
+  RegisterRequest,
+  UpdateRequest,
+  UserInterface,
+} from '../models/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment.development';
@@ -41,6 +46,12 @@ export class AuthService {
     localStorage.setItem('token', '');
     this.currentUserSig.set(null);
     void this.router.navigateByUrl('/login');
+  }
+
+  update(updateRequest: UpdateRequest): Observable<{ user: UserInterface }> {
+    return this.http.put<{ user: UserInterface }>(`${this.realWorldAPI}/user`, {
+      user: updateRequest,
+    });
   }
 
   isLoggedIn(): boolean {
