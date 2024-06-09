@@ -1,6 +1,11 @@
 <div class="flex flex-col min-h-dvh">
+  @if (authService.isLoggedIn()) {
     <app-nav></app-nav>
+  }
   <main class="flex flex-grow bg-gray-100 overflow-hidden">
+    @if (authService.isLoggedIn()) {
+      <app-sidebar></app-sidebar>
+    }
     <router-outlet></router-outlet>
   </main>
 </div>

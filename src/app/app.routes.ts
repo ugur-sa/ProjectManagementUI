@@ -1,16 +1,26 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { inject } from '@angular/core';
-import { AuthService } from './services/auth/auth.service';
+import { LoginComponent } from './features/auth/components/login/login.component';
+import { RegistrationComponent } from './features/auth/components/registration/registration.component';
+import { DashboardComponent } from './pages/projects/components/dashboard/dashboard.component';
+import { isLoggedInGuard } from './core/guards/is-logged-in.guard';
+import { WorkItemsComponent } from './pages/projects/components/work-items/work-items.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [() => inject(AuthService).isLoggedIn()],
+    canActivate: [isLoggedInGuard],
+  },
+  {
+    path: 'work-items',
+    component: WorkItemsComponent,
+    canActivate: [isLoggedInGuard],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
+  {
+    path: '',
+    redirectTo: '/work-items',
+    pathMatch: 'full',
+  },
 ];

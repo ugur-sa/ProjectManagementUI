@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { RegisterRequest } from '../../models/auth';
 import {
   FormControl,
@@ -37,7 +37,7 @@ export class RegistrationComponent {
       next: response => {
         localStorage.setItem('token', response.user.token);
         this.authService.currentUserSig.set(response.user);
-        void this.router.navigateByUrl('/');
+        void this.router.navigateByUrl('/dashboard');
       },
       error: () => {
         console.error('Registration failed');

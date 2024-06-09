@@ -5,7 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { LoginRequest } from '../../models/auth';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
@@ -39,7 +39,7 @@ export class LoginComponent {
       next: response => {
         localStorage.setItem('token', response.user.token);
         this.authService.currentUserSig.set(response.user);
-        void this.router.navigateByUrl('/');
+        void this.router.navigateByUrl('/dashboard');
       },
       error: () => {
         console.error('Login failed');

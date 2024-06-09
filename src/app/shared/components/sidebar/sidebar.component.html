@@ -1,0 +1,19 @@
+<div class="border-r bg-white h-full w-[200px] p-4 hidden md:flex font-sans">
+  <div class="w-full">
+    <ul>
+      <li class="px-2 py-1">
+        <p class="text-[12px] font-bold text-neutral-400">OVERVIEW</p>
+      </li>
+      <li class="rounded-md px-2 py-1" routerLinkActive="bg-neutral-200">
+        <a [routerLink]="['/dashboard']">
+          <span class="font-light text-sm">Dashboard</span>
+        </a>
+      </li>
+      <li class="rounded-md px-2 py-1" routerLinkActive="bg-neutral-100">
+        <a [routerLink]="['/work-items']">
+          <span class="font-light text-sm">Work Items</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
