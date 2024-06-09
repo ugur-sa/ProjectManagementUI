@@ -10,6 +10,7 @@ import { AuthService } from './features/auth/services/auth.service';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { HttpClient } from '@angular/common/http';
 import { UserInterface } from './features/auth/models/auth';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { UserInterface } from './features/auth/models/auth';
     RouterLinkActive,
     LoginComponent,
     NavComponent,
+    SidebarComponent,
   ],
   templateUrl: './app.component.html',
 })
