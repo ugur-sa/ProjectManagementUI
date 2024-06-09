@@ -41,6 +41,6 @@ export class NavComponent {
       restoreFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
+    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus);
   }
 }

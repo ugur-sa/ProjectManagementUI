@@ -20,7 +20,7 @@ export const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   {
     path: '',
-    redirectTo: '/work-items',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
 ];
