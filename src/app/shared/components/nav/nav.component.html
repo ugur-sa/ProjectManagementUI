@@ -19,10 +19,20 @@
   </div>
   <div class="flex gap-4 items-center justify-end h-full w-1/2 pr-4">
     <div class="w-6 h-6 border border-black rounded-full"></div>
-    <div
+    <button
+      [matMenuTriggerFor]="menu"
+      #menuTrigger
       class="bg-cyan-500 w-10 h-10 grid place-content-center rounded-full font-semibold text-xl text-white">
       {{ getInitial() }}
-    </div>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openDialog()">
+        Settings<mat-icon>settings</mat-icon>
+      </button>
+      <button mat-menu-item (click)="authService.logout()">
+        Logout<mat-icon>logout</mat-icon>
+      </button>
+    </mat-menu>
   </div>
 </nav>
 
