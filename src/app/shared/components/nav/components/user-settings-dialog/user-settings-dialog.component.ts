@@ -54,12 +54,14 @@ export class UserSettingsDialogComponent {
       this.loadingSubject.next(true);
       if (field === 'username') {
         const updateRequest = {
-          username: this.formData[field],
+          username: this.formData['username'],
         };
         this.authService.update(updateRequest).subscribe({
           next: response => {
             this.authService.currentUserSig.set(response.user);
             this.loadingSubject.next(false);
+            this.formData.username =
+              this.authService.currentUserSig()?.username ?? '';
           },
           error: () => {
             console.error('Error updating username');
@@ -74,6 +76,8 @@ export class UserSettingsDialogComponent {
           next: response => {
             this.authService.currentUserSig.set(response.user);
             this.loadingSubject.next(false);
+            this.formData.email =
+              this.authService.currentUserSig()?.email ?? '';
           },
           error: () => {
             console.error('Error updating email');
