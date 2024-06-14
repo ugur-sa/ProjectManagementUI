@@ -1,11 +1,15 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../features/auth/services/auth.service';
-import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatIconButton } from '@angular/material/button';
-import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
-import { MatDialog } from '@angular/material/dialog';
-import { UserSettingsDialogComponent } from './components/user-settings-dialog/user-settings-dialog.component';
+import { MenuItem } from 'primeng/api';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
+import { AvatarModule } from 'primeng/avatar';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Button } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
 
 @Component({
   selector: 'app-nav',
@@ -13,34 +17,50 @@ import { UserSettingsDialogComponent } from './components/user-settings-dialog/u
   imports: [
     RouterLink,
     RouterLinkActive,
-    MatIconButton,
-    MatMenuTrigger,
-    MatMenu,
-    MatMenuItem,
-    MatIcon,
-    MatButton,
+    MenuModule,
+    ButtonModule,
+    AvatarModule,
+    Button,
+    DialogModule,
+    InputTextModule,
+    UserAvatarComponent,
   ],
+  providers: [DialogService],
   templateUrl: './nav.component.html',
 })
-export class NavComponent {
-  @ViewChild('menuTrigger') menuTrigger: MatMenuTrigger;
+export class NavComponent implements OnInit {
+  items: MenuItem[] | undefined;
 
   authService = inject(AuthService);
   router = inject(Router);
 
-  constructor(public dialog: MatDialog) {}
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'Profile',
+        items: [
+          {
+            label: 'Settings',
+            icon: 'pi pi-cog',
+            command: () => {
+              console.log('this should open user settings');
+            },
+          },
+          {
+            label: 'Logout',
+            icon: 'pi pi-sign-out',
+            command: () => {
+              this.authService.logout();
+            },
+          },
+        ],
+      },
+    ];
+  }
 
   getInitial(): string {
     return (
       this.authService.currentUserSig()?.username.charAt(0).toUpperCase() ?? ''
     );
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(UserSettingsDialogComponent, {
-      restoreFocus: false,
-    });
-
-    dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus);
   }
 }

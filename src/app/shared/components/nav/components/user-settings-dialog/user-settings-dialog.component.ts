@@ -1,28 +1,16 @@
 import { Component, inject } from '@angular/core';
-import {
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-} from '@angular/material/dialog';
-import { MatButton } from '@angular/material/button';
-import { MatDivider } from '@angular/material/divider';
-import { MatIcon } from '@angular/material/icon';
 import { AuthService } from '../../../../../features/auth/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Button } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-user-settings-dialog',
   standalone: true,
-  imports: [
-    MatDialogContent,
-    MatDialogActions,
-    MatButton,
-    MatDialogClose,
-    MatDivider,
-    MatIcon,
-    FormsModule,
-  ],
+  imports: [FormsModule, Button, DialogModule, InputTextModule],
   templateUrl: './user-settings-dialog.component.html',
 })
 export class UserSettingsDialogComponent {
@@ -41,6 +29,8 @@ export class UserSettingsDialogComponent {
     username: this.authService.currentUserSig()?.username || '',
     email: this.authService.currentUserSig()?.email || '',
   };
+
+  constructor(public ref: DynamicDialogRef) {}
 
   toggleEditMode(field: 'username' | 'email') {
     this.editMode[field] = !this.editMode[field];
