@@ -3,29 +3,12 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../features/auth/services/auth.service';
 import { MenuItem } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
-import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { Button } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import { InputTextModule } from 'primeng/inputtext';
 import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    MenuModule,
-    ButtonModule,
-    AvatarModule,
-    Button,
-    DialogModule,
-    InputTextModule,
-    UserAvatarComponent,
-  ],
-  providers: [DialogService],
+  imports: [RouterLink, RouterLinkActive, MenuModule, UserAvatarComponent],
   templateUrl: './nav.component.html',
 })
 export class NavComponent implements OnInit {
@@ -43,6 +26,7 @@ export class NavComponent implements OnInit {
             label: 'Settings',
             icon: 'pi pi-cog',
             command: () => {
+              // TODO: Open Dialog on click
               console.log('this should open user settings');
             },
           },
